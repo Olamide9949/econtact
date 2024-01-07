@@ -10,6 +10,7 @@ function MainActivity() {
         additionalName:"",
         phoneNumber:"",
         mobileNumber:"",
+        email:"",
         jobTitle:"",
         company:"",
         website:"",

@@ -57,7 +57,7 @@ export const ContactCardUI = (props:any) => {
                 {/*Phone number and company*/}
                 <div className={'mt-8 flex md:items-center w-full md:justify-between md:flex-row flex-col'}>
                     <div className={'w-full'}>
-                        <p>Phone Number</p>
+                        <p>Work Phone</p>
                         <input
                             onChange={(event)=> {
                                 props.setContactDetails({
@@ -66,7 +66,7 @@ export const ContactCardUI = (props:any) => {
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
-                            placeholder={'Phone number'}/>
+                            placeholder={'Work phone (0909821234)'}/>
                     </div>
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>Mobile Number</p>
@@ -82,6 +82,19 @@ export const ContactCardUI = (props:any) => {
                     </div>
                 </div>
 
+                {/*Email address*/}
+                <div className={'mt-8 w-full'}>
+                    <p>Email Address</p>
+                    <input
+                        onChange={(event)=> {
+                            props.setContactDetails({
+                                ...props.contactDetails,
+                                email:event.target.value
+                            })
+                        }}
+                        className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
+                        placeholder={'Email address'}/>
+                </div>
                 {/*Job title*/}
                 <div className={'mt-8 w-full'}>
                     <p>Job title</p>
