@@ -19,7 +19,7 @@ export const QRCodeUI = (props:any) => {
                 <div className={'border border-[#000000]/10 rounded-md w-1/2'}>
                     <QRCode size={128}
                             style={{ height: "auto", maxWidth: "50%", width: "50%" }}
-                            value={props.contactDetails}
+                            value={JSON.stringify(props.contactDetails)}
                             logoImage={'/logo.png'}
                             logoHeight={30}
                             logoWidth={30}
