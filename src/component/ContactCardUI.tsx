@@ -63,6 +63,7 @@ export const ContactCardUI = (props:any) => {
                     <div className={'w-full'}>
                         <p>Work Phone</p>
                         <input
+                            inputMode={"tel"}
                             onChange={(event)=> {
                                 props.setContactDetails({
                                     ...props.contactDetails,

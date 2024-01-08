@@ -2,8 +2,6 @@ import {ArrowDownTrayIcon} from "@heroicons/react/24/solid";
 import vCard from "vcards-js";
 import {QRCodeCanvas} from "qrcode.react";
 import html2canvas from "html2canvas";
-//import { QRCode } from "react-qrcode-logo";
-//import {QrCodeIcon} from "@heroicons/react/24/solid";
 
 
 export const QRCodeUI = (props:any) => {
