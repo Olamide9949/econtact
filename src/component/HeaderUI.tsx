@@ -2,7 +2,7 @@ import {Logo} from "../assets";
 import * as Icon from "@heroicons/react/16/solid";
 
 
-export const HeaderUI = () => {
+export const HeaderUI = (props:any) => {
     return <div className={'font-[Livvic] max-w-[1350px] mx-auto md:px-12 px-4 py-4 flex flex-row items-center justify-between'}>
 
         {/*Desktop Header*/}
@@ -14,7 +14,9 @@ export const HeaderUI = () => {
                 <button onClick={()=>alert("You're currently on the personal contact service!")} className={'outline-none hover:text-[#888888]'}>
                     <p>Personal Contact</p>
                 </button>
-                <button onClick={()=>alert("Working on it!")} className={'ml-12 outline-none hover:text-[#888888]'}>
+                <button onClick={()=> {
+                    props.setIsCompany(!props.isCompany)
+                }} className={'ml-12 outline-none hover:text-[#888888]'}>
                     <p>Company Contact</p>
                 </button>
                 <button onClick={()=>alert("Working on a customized service for you!")} className={'ml-12 outline-none hover:text-[#888888]'}>

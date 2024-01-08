@@ -21,11 +21,12 @@ function MainActivity() {
         zipcode:"",
         notes:""
     })
+    const [isCompany, setIsCompany] = useState(false);
 
   return (
     <>
-        <HeaderUI/>
-        <ContactCardUI contactDetails={contactDetails} setContactDetails={setContactDetails} setTriggerModal={setTriggerModal}/>
+        <HeaderUI setIsCompany={setIsCompany} isCompany={isCompany}/>
+        <ContactCardUI isCompany={isCompany} contactDetails={contactDetails} setContactDetails={setContactDetails} setTriggerModal={setTriggerModal}/>
         <QRCodeUI contactDetails={contactDetails} setContactDetails={setContactDetails} triggerModal={triggerModal} setTriggerModal={setTriggerModal}/>
         <FloatingFooterUI/>
     </>

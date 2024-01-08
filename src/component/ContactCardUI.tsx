@@ -1,7 +1,17 @@
 import {QrCodeIcon} from "@heroicons/react/16/solid";
+import {useState} from "react";
 
 
 export const ContactCardUI = (props:any) => {
+    const [img, setImg] = useState<any>();
+    // const reader = new FileReader();
+    // reader.readAsDataURL(img)
+    //
+    // reader.onload = () => {
+    //     console.log('called: ', reader)
+    //     console.log(reader.result)
+    // }
+
     return <div className={'font-[Livvic] overflow-hidden max-w-[1350px] mx-auto md:px-16 px-4 md:pt-20 pt-10'}>
         <div className={'flex w-full md:flex-row md:items-start md:justify-between flex-col'}>
             <div className={'md:w-1/2 w-full'}>
@@ -11,7 +21,20 @@ export const ContactCardUI = (props:any) => {
             </div>
 
             {/*Contact form*/}
-            <div className={'md:h-[450px] h-[350px] overflow-y-scroll md:w-1/2 w-full text-[#666666] font-[500] md:mt-0 mt-8'}>
+            <div
+                className={'md:h-[450px] h-[350px] overflow-y-scroll md:w-1/2 w-full text-[#666666] font-[500] md:mt-0 mt-8'}>
+                {/*Company Logo*/}
+                {props.isCompany && <div className={'my-8 w-full'}>
+                    <p>Upload Company Logo</p>
+                    <input
+                        required
+                        type={"file"}
+                        onChange={(event: any) => {
+                            setImg(event.target.files[0])
+                        }}
+                        className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
+                        placeholder={'company logo'}/>
+                </div>}
                 {/*First and Last Names*/}
                 <div className={'flex md:items-center w-full md:justify-between md:flex-row flex-col'}>
                     <div className={'w-full'}>
@@ -19,10 +42,10 @@ export const ContactCardUI = (props:any) => {
                         <input
                             required
                             inputMode={"text"}
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    firstName:event.target.value
+                                    firstName: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -33,10 +56,10 @@ export const ContactCardUI = (props:any) => {
                         <input
                             required
                             inputMode={"text"}
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    lastName:event.target.value
+                                    lastName: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -48,10 +71,10 @@ export const ContactCardUI = (props:any) => {
                 <div className={'mt-8 w-full'}>
                     <p>Additional Names</p>
                     <input
-                        onChange={(event)=> {
+                        onChange={(event) => {
                             props.setContactDetails({
                                 ...props.contactDetails,
-                                addtionalName:event.target.value
+                                addtionalName: event.target.value
                             })
                         }}
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -64,10 +87,10 @@ export const ContactCardUI = (props:any) => {
                         <p>Work Phone</p>
                         <input
                             inputMode={"tel"}
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    phoneNumber:event.target.value
+                                    phoneNumber: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -78,10 +101,10 @@ export const ContactCardUI = (props:any) => {
                         <input
                             required
                             inputMode={"tel"}
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    mobileNumber:event.target.value
+                                    mobileNumber: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -95,10 +118,10 @@ export const ContactCardUI = (props:any) => {
                     <input
                         required
                         inputMode={"email"}
-                        onChange={(event)=> {
+                        onChange={(event) => {
                             props.setContactDetails({
                                 ...props.contactDetails,
-                                email:event.target.value
+                                email: event.target.value
                             })
                         }}
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -108,10 +131,10 @@ export const ContactCardUI = (props:any) => {
                 <div className={'mt-8 w-full'}>
                     <p>Job title</p>
                     <input
-                        onChange={(event)=> {
+                        onChange={(event) => {
                             props.setContactDetails({
                                 ...props.contactDetails,
-                                jobTitle:event.target.value
+                                jobTitle: event.target.value
                             })
                         }}
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -123,10 +146,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'w-full'}>
                         <p>Company</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    company:event.target.value
+                                    company: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -135,10 +158,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>Website</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    website:event.target.value
+                                    website: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -152,10 +175,10 @@ export const ContactCardUI = (props:any) => {
                     <textarea
                         required
                         inputMode={"text"}
-                        onChange={(event)=> {
+                        onChange={(event) => {
                             props.setContactDetails({
                                 ...props.contactDetails,
-                                address:event.target.value
+                                address: event.target.value
                             })
                         }}
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -167,10 +190,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'w-full'}>
                         <p>City</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    city:event.target.value
+                                    city: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -179,10 +202,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>State</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    state:event.target.value
+                                    state: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -195,10 +218,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'w-full'}>
                         <p>Country</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    country:event.target.value
+                                    country: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -207,10 +230,10 @@ export const ContactCardUI = (props:any) => {
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>Zipcode</p>
                         <input
-                            onChange={(event)=> {
+                            onChange={(event) => {
                                 props.setContactDetails({
                                     ...props.contactDetails,
-                                    zipcode:event.target.value
+                                    zipcode: event.target.value
                                 })
                             }}
                             className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -222,10 +245,10 @@ export const ContactCardUI = (props:any) => {
                 <div className={'mt-8 w-full'}>
                     <p>Notes</p>
                     <textarea
-                        onChange={(event)=> {
+                        onChange={(event) => {
                             props.setContactDetails({
                                 ...props.contactDetails,
-                                notes:event.target.value
+                                notes: event.target.value
                             })
                         }}
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
@@ -233,7 +256,8 @@ export const ContactCardUI = (props:any) => {
                 </div>
 
                 {/*Button*/}
-                <button onClick={()=>props.setTriggerModal(true)} className={'flex flex-row items-center justify-between outline-none bg-[#000000] text-[#ffffff] p-2 rounded-md mt-4'}>
+                <button onClick={() => props.setTriggerModal(true)}
+                        className={'flex flex-row items-center justify-between outline-none bg-[#000000] text-[#ffffff] p-2 rounded-md mt-4'}>
                     <QrCodeIcon height={25} width={25}/>
                     <p>Generate your Qr</p>
                 </button>
