@@ -18,11 +18,7 @@ export const QRCodeUI = (props:any) => {
     vcf.url = props.contactDetails.website;
     vcf.role = props.contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
-    vcf.workAddress.street = props.contactDetails.address;
-    vcf.workAddress.city = props.contactDetails.city;
-    vcf.workAddress.label = props.contactDetails.state;
-    vcf.workAddress.postalCode = props.contactDetails.zipcode;
-    vcf.workAddress.countryRegion = props.contactDetails.country;
+    vcf.homeAddress = props.contactDetails.address;
     const options = {
         src:"/logo.png",
         height:30,
@@ -43,7 +39,7 @@ export const QRCodeUI = (props:any) => {
                     <QRCodeCanvas
                         value={vcf.getFormattedString()}
                         size={150}
-                        level="Q"
+                        level="L"
                         imageSettings={options}
                         bgColor="#fff"
                         fgColor="#000"
