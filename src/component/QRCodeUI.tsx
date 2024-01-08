@@ -50,7 +50,7 @@ export const QRCodeUI = (props:any) => {
                 props.setTriggerModal(false)
             });
     }
-    return props.triggerModal && <div className={'font-[Livvic] w-full h-full absolute top-0 z-14 left-0 bg-[#000000]/30 flex items-center flex-col justify-center'}>
+    return props.triggerModal && <div className={'font-[Livvic] w-full md:h-full h-screen absolute top-0 md:z-14 z-20 left-0 bg-[#000000]/30 flex items-center flex-col justify-center'}>
         <div className={'w-[350px] flex flex-col items-center justify-center min-h-[450px] bg-[#ffffff] rounded-md'}>
             <div id={"qrcode"} className={'w-full p-4'}>
                 <h3 className={'mt-4 text-center text-[22px] font-[600]'}>Share your Profile🎉</h3>
