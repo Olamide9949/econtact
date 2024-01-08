@@ -17,6 +17,8 @@ export const ContactCardUI = (props:any) => {
                     <div className={'w-full'}>
                         <p>First Name</p>
                         <input
+                            required
+                            inputMode={"text"}
                             onChange={(event)=> {
                                 props.setContactDetails({
                                     ...props.contactDetails,
@@ -29,6 +31,8 @@ export const ContactCardUI = (props:any) => {
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>Last Name</p>
                         <input
+                            required
+                            inputMode={"text"}
                             onChange={(event)=> {
                                 props.setContactDetails({
                                     ...props.contactDetails,
@@ -71,6 +75,8 @@ export const ContactCardUI = (props:any) => {
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
                         <p>Mobile Number</p>
                         <input
+                            required
+                            inputMode={"tel"}
                             onChange={(event)=> {
                                 props.setContactDetails({
                                     ...props.contactDetails,
@@ -86,6 +92,8 @@ export const ContactCardUI = (props:any) => {
                 <div className={'mt-8 w-full'}>
                     <p>Email Address</p>
                     <input
+                        required
+                        inputMode={"email"}
                         onChange={(event)=> {
                             props.setContactDetails({
                                 ...props.contactDetails,
@@ -141,6 +149,8 @@ export const ContactCardUI = (props:any) => {
                 <div className={'mt-8 w-full'}>
                     <p>Street Address</p>
                     <textarea
+                        required
+                        inputMode={"text"}
                         onChange={(event)=> {
                             props.setContactDetails({
                                 ...props.contactDetails,
