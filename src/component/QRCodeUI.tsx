@@ -19,7 +19,7 @@ export const QRCodeUI = (props:any) => {
     vcf.note = props.contactDetails.notes;
     vcf.homeAddress = props.contactDetails.address;
     const options = {
-        src:"/dkk.jpg",
+        src:"/logo.png",
         height:35,
         width:50,
         excavate:false
