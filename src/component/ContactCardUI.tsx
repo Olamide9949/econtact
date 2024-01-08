@@ -1,16 +1,23 @@
 import {QrCodeIcon} from "@heroicons/react/16/solid";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 export const ContactCardUI = (props:any) => {
-    const [img, setImg] = useState<any>();
-    // const reader = new FileReader();
-    // reader.readAsDataURL(img)
-    //
-    // reader.onload = () => {
-    //     console.log('called: ', reader)
-    //     console.log(reader.result)
-    // }
+    const [img, setImg] = useState();
+
+    useEffect(() => {
+        if (!img) {
+            props.setImgURl(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(img)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        props.setImgURl(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [img])
 
     return <div className={'font-[Livvic] overflow-hidden max-w-[1350px] mx-auto md:px-16 px-4 md:pt-20 pt-10'}>
         <div className={'flex w-full md:flex-row md:items-start md:justify-between flex-col'}>
@@ -24,7 +31,7 @@ export const ContactCardUI = (props:any) => {
             <div
                 className={'md:h-[450px] h-[350px] overflow-y-scroll md:w-1/2 w-full text-[#666666] font-[500] md:mt-0 mt-8'}>
                 {/*Company Logo*/}
-                {props.isCompany && <div className={'my-8 w-full'}>
+                {props.isCompany && <div className={'mt-8 w-full'}>
                     <p>Upload Company Logo</p>
                     <input
                         required
@@ -35,6 +42,7 @@ export const ContactCardUI = (props:any) => {
                         className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
                         placeholder={'company logo'}/>
                 </div>}
+                {img &&  <img className={'mt-4 rounded w-[100px] h-[65px] object-cover mb-8'} alt={'preview'} src={props.imgURL} />}
                 {/*First and Last Names*/}
                 <div className={'flex md:items-center w-full md:justify-between md:flex-row flex-col'}>
                     <div className={'w-full'}>

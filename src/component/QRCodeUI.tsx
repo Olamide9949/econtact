@@ -18,6 +18,8 @@ export const QRCodeUI = (props:any) => {
     vcf.role = props.contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
     vcf.homeAddress = props.contactDetails.address;
+    vcf.logo = props.imgURL;
+
     const options = {
         src:"/logo.png",
         height:35,

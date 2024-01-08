@@ -2,8 +2,6 @@ import {ContactCardUI, FloatingFooterUI, HeaderUI, QRCodeUI} from "./component";
 import {useState} from "react";
 
 function MainActivity() {
-
-    const [triggerModal, setTriggerModal] = useState(false);
     const [contactDetails, setContactDetails] = useState({
         firstName:"",
         lastName:"",
@@ -21,13 +19,15 @@ function MainActivity() {
         zipcode:"",
         notes:""
     })
+    const [triggerModal, setTriggerModal] = useState(false);
     const [isCompany, setIsCompany] = useState(false);
+    const [imgURL, setImgURl] = useState();
 
   return (
     <>
         <HeaderUI setIsCompany={setIsCompany} isCompany={isCompany}/>
-        <ContactCardUI isCompany={isCompany} contactDetails={contactDetails} setContactDetails={setContactDetails} setTriggerModal={setTriggerModal}/>
-        <QRCodeUI contactDetails={contactDetails} setContactDetails={setContactDetails} triggerModal={triggerModal} setTriggerModal={setTriggerModal}/>
+        <ContactCardUI setImgURl={setImgURl} imgURL={imgURL} isCompany={isCompany} contactDetails={contactDetails} setContactDetails={setContactDetails} setTriggerModal={setTriggerModal}/>
+        <QRCodeUI imgURL={imgURL} contactDetails={contactDetails} setContactDetails={setContactDetails} triggerModal={triggerModal} setTriggerModal={setTriggerModal}/>
         <FloatingFooterUI/>
     </>
   )
