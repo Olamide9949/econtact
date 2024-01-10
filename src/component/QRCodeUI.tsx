@@ -1,4 +1,5 @@
 import {ArrowDownTrayIcon} from "@heroicons/react/24/solid";
+import {XMarkIcon} from "@heroicons/react/24/outline";
 import vCard from "vcards-js";
 import {QRCodeCanvas} from "qrcode.react";
 import html2canvas from "html2canvas";
@@ -18,15 +19,16 @@ export const QRCodeUI = (props:any) => {
     vcf.role = props.  contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
     vcf.homeAddress = props.contactDetails.address;
+    vcf.photo = props.imgURL;
 
     const options = {
-        src:"/logo.png",
-        height:35,
-        width:50,
+        src: props.imgURL || "/logo.png",
+        height:45,
+        width:55,
         excavate:false
     }
 
-    const generateCode = () => {
+    const downloadqrCode = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         html2canvas(document.querySelector("#qrcode"))
@@ -46,14 +48,20 @@ export const QRCodeUI = (props:any) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 link.parentNode.removeChild(link);
-                props.setTriggerModal(false)
+                props.setTriggerModal(false);
+                window.location.reload();
             });
     }
-    return props.triggerModal && <div className={'font-[Livvic] w-full md:h-full h-screen absolute top-0 md:z-14 z-20 left-0 bg-[#000000]/30 flex items-center flex-col justify-center'}>
-        <div className={'w-[350px] flex flex-col items-center justify-center min-h-[450px] bg-[#ffffff] rounded-md'}>
+    return props.triggerModal && <div className={'font-[Livvic] w-full h-[100%] absolute top-0 md:z-14 z-20 left-0 bg-[#000000]/30 flex items-center flex-col justify-center'}>
+        <div
+            className={'w-[350px] flex flex-col items-center justify-center min-h-[450px] bg-[#ffffff] rounded-md relative'}>
+            <button className={'absolute top-4 right-4'} onClick={() => props.setTriggerModal(false)}>
+                <XMarkIcon width={25} height={25} color={"#B33A3A"}/>
+            </button>
             <div id={"qrcode"} className={'w-full p-4'}>
                 <h3 className={'mt-4 text-center text-[22px] font-[600]'}>Share your Profile🎉</h3>
-                <p className={'mb-4 text-[13px] text-[#000000]/50 italic text-center'}>Your profile information all in one piece.</p>
+                <p className={'mb-4 text-[13px] text-[#000000]/50 italic text-center'}>Your profile information all in
+                    one piece.</p>
                 <div className={'flex flex-col items-center justify-between w-full'}>
                     <div className={'border border-[#000000]/20 rounded-md w-full'}>
                         <QRCodeCanvas
@@ -77,12 +85,12 @@ export const QRCodeUI = (props:any) => {
                     <input
                         type="color"
                         className={'border-none outline-none w-10 h-8'}
-                        onChange={(event)=>props.setQrColor(event.target.value)}
+                        onChange={(event) => props.setQrColor(event.target.value)}
                         value={props.qrColor}
                     />
                     <img alt={'palette'} src={Palette} className={'w-[30px] h-[30px]'}/>
                 </div>
-                <button onClick={generateCode}
+                <button onClick={downloadqrCode}
                         className={'ml-8 font-[500] flex flex-row text-[#ffffff] bg-[#000000] rounded-md p-2 items-center justify-between'}>
                     <ArrowDownTrayIcon color={'#ffffff'} height={25} width={25}/>
                     <p className={'ml-2'}>Download</p>

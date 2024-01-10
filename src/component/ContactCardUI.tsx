@@ -20,6 +20,18 @@ export const ContactCardUI = (props:any) => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [img])
 
+    const generateCode = () => {
+        if(!props.contactDetails.firstName || !props.contactDetails.lastName){
+            alert("Incomplete Fields {{First name/Last name}}!!")
+        } else if(!props.contactDetails.mobileNumber){
+            alert("Missing Field {{Mobile number}}!!")
+        }else if(!props.contactDetails.email){
+            alert("Missing Field {{Email}}!!")
+        }else{
+            props.setTriggerModal(true);
+        }
+    }
+
     return <div className={'font-[Livvic] overflow-hidden max-w-[1350px] mx-auto md:px-16 px-4 md:pt-20 pt-10'}>
         <div className={'flex w-full md:flex-row md:items-start md:justify-between flex-col'}>
             <div className={`md:w-1/2 w-full bg-[url(${ContactScan3D})] md:h-[400px] h-[250px] md:bg-right bg-center object-contain`}>
@@ -33,23 +45,23 @@ export const ContactCardUI = (props:any) => {
             {/*Contact form*/}
             <div
                 className={'md:h-[450px] h-[350px] overflow-y-scroll md:w-1/2 w-full text-[#666666] font-[500] md:mt-0 mt-8'}>
+                <p className={'text-[10px]'}>All form fields labeled with (<span className={'text-[#B33A3A]'}>*</span>) are required you must fill them.</p>
                 {/*Company Logo*/}
-                {props.isCompany && <div className={'mt-8 w-full'}>
-                    <p>Upload Company Logo</p>
+                <div className={'mt-8 w-full'}>
+                    <p>Upload your picture/company logo</p>
                     <input
-                        required
                         type={"file"}
                         onChange={(event: any) => {
                             setImg(event.target.files[0])
                         }}
-                        className={'placeholder:font-[600] my-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
-                        placeholder={'company logo'}/>
-                </div>}
-                {img &&  <img className={'mt-4 rounded w-[100px] h-[65px] object-cover mb-8'} alt={'preview'} src={props.imgURL} />}
+                        className={'placeholder:font-[600] mt-2 mb-8 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
+                        placeholder={'picture/company logo'}/>
+                </div>
+                {img &&  <img className={'rounded w-[100px] h-[65px] object-cover mb-8'} alt={'preview'} src={props.imgURL} />}
                 {/*First and Last Names*/}
                 <div className={'flex md:items-center w-full md:justify-between md:flex-row flex-col'}>
                     <div className={'w-full'}>
-                        <p>First Name</p>
+                        <p>First Name<span className={'text-[#B33A3A]'}>*</span></p>
                         <input
                             required
                             inputMode={"text"}
@@ -63,7 +75,7 @@ export const ContactCardUI = (props:any) => {
                             placeholder={'First name'}/>
                     </div>
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
-                        <p>Last Name</p>
+                        <p>Last Name<span className={'text-[#B33A3A]'}>*</span></p>
                         <input
                             required
                             inputMode={"text"}
@@ -108,7 +120,7 @@ export const ContactCardUI = (props:any) => {
                             placeholder={'Work phone (0909821234)'}/>
                     </div>
                     <div className={'md:ml-2 ml-0 md:mt-0 mt-8 w-full'}>
-                        <p>Mobile Number</p>
+                        <p>Mobile Number<span className={'text-[#B33A3A]'}>*</span></p>
                         <input
                             required
                             inputMode={"tel"}
@@ -125,7 +137,7 @@ export const ContactCardUI = (props:any) => {
 
                 {/*Email address*/}
                 <div className={'mt-8 w-full'}>
-                    <p>Email Address</p>
+                    <p>Email Address<span className={'text-[#B33A3A]'}>*</span></p>
                     <input
                         required
                         inputMode={"email"}
@@ -267,7 +279,7 @@ export const ContactCardUI = (props:any) => {
                 </div>
 
                 {/*Button*/}
-                <button onClick={() => props.setTriggerModal(true)}
+                <button onClick={generateCode}
                         className={'flex flex-row items-center justify-between outline-none bg-[#000000] text-[#ffffff] p-2 rounded-md mt-4'}>
                     <QrCodeIcon height={25} width={25}/>
                     <p>Generate your Qr</p>
