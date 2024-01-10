@@ -12,14 +12,21 @@ export const QRCodeUI = (props:any) => {
     vcf.lastName = props.contactDetails.lastName;
     vcf.middleName = props.contactDetails.addtionalName;
     vcf.email = props.contactDetails.email;
-    vcf.organization = props.contactDetails.company;
-    vcf.cellPhone = props.contactDetails.mobileNumber;
-    vcf.workPhone = props.contactDetails.phoneNumber;
     vcf.url = props.contactDetails.website;
-    vcf.role = props.  contactDetails.jobTitle;
+    vcf.organization = props.contactDetails.company;
+    vcf.homePhone = props.contactDetails.mobileNumber;
+    vcf.workPhone = props.contactDetails.phoneNumber;
+    vcf.title = props.  contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
-    vcf.homeAddress = props.contactDetails.address;
-    vcf.photo = props.imgURL;
+    vcf.homeAddress.label = "Home Address";
+    vcf.homeAddress.street = props.contactDetails.address;
+    vcf.homeAddress.city = props.contactDetails.city;
+    vcf.homeAddress.stateProvince = props.contactDetails.state;
+    vcf.homeAddress.postalCode = props.contactDetails.zipcode;
+    vcf.homeAddress.countryRegion = props.contactDetails.country;
+    vcf.photo.attachFromUrl = props.imgURL;
+    vcf.version = "3.0"
+
 
     const options = {
         src: props.imgURL || "/logo.png",
