@@ -1,5 +1,7 @@
 import Logo from "./logo.png";
+import ContactScan3D from "./scanthreedeecontact.webp";
 
 export {
-    Logo
+    Logo,
+    ContactScan3D
 }

@@ -7,10 +7,10 @@ export const HeaderUI = (props:any) => {
 
         {/*Desktop Header*/}
         <div className={'md:flex hidden flex-row items-center'}>
-            <img className={'w-10 h-10'} src={`${Logo}`} alt={'scanny logo'}/>
-            <p className={'text-[22px] text-[#666666] font-[800]'}>Scanny</p>
+            <img className={'hidden w-10 h-10'} src={`${Logo}`} alt={'scanny logo'}/>
+            <p className={'hidden text-[22px] text-[#666666] font-[800]'}>Scanny</p>
 
-            <div className={'ml-16 text-[#666666] font-[500]'}>
+            <div className={'hidden ml-16 text-[#666666] font-[500]'}>
                 <button onClick={()=>alert("You're currently on the personal contact service!")} className={'outline-none hover:text-[#888888]'}>
                     <p>Personal Contact</p>
                 </button>

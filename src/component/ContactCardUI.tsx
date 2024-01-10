@@ -1,5 +1,6 @@
 import {QrCodeIcon} from "@heroicons/react/16/solid";
 import {useEffect, useState} from "react";
+import {ContactScan3D, Logo} from "../assets";
 
 
 export const ContactCardUI = (props:any) => {
@@ -21,10 +22,12 @@ export const ContactCardUI = (props:any) => {
 
     return <div className={'font-[Livvic] overflow-hidden max-w-[1350px] mx-auto md:px-16 px-4 md:pt-20 pt-10'}>
         <div className={'flex w-full md:flex-row md:items-start md:justify-between flex-col'}>
-            <div className={'md:w-1/2 w-full'}>
-                <p className={'md:text-[70px] text-[30px] font-[700] text-[#000000]'}>Who are you?</p>
-                <p className={'text-[#666666]/60 font-[500]'}>Enter your contact details you want to share.</p>
-                <p className={'text-[#666666]/60 font-[500]'}>Click and share qr-code.</p>
+            <div className={`md:w-1/2 w-full bg-[url(${ContactScan3D})] h-[400px] object-contain`}>
+                <div className={'flex items-center flex-row'}>
+                    <img className={'w-14 h-14'} src={`${Logo}`} alt={'scanny logo'}/>
+                    <p className={'text-[36px] text-[#000000] font-[800]'}>Scanny</p>
+                </div>
+                <p className={'-mt-2 text-[#000000]/40 font-[500] text-[12px]'}>Free contact qr-code generator.</p>
             </div>
 
             {/*Contact form*/}
@@ -39,7 +42,7 @@ export const ContactCardUI = (props:any) => {
                         onChange={(event: any) => {
                             setImg(event.target.files[0])
                         }}
-                        className={'placeholder:font-[600] mt-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
+                        className={'placeholder:font-[600] my-2 rounded-md outline-[#666666]/70 border-[#666666]/30 w-full p-2 border'}
                         placeholder={'company logo'}/>
                 </div>}
                 {img &&  <img className={'mt-4 rounded w-[100px] h-[65px] object-cover mb-8'} alt={'preview'} src={props.imgURL} />}
