@@ -2,6 +2,7 @@ import {ArrowDownTrayIcon} from "@heroicons/react/24/solid";
 import vCard from "vcards-js";
 import {QRCodeCanvas} from "qrcode.react";
 import html2canvas from "html2canvas";
+import {Palette} from "../assets";
 
 
 export const QRCodeUI = (props:any) => {
@@ -13,12 +14,10 @@ export const QRCodeUI = (props:any) => {
     vcf.organization = props.contactDetails.company;
     vcf.cellPhone = props.contactDetails.mobileNumber;
     vcf.workPhone = props.contactDetails.phoneNumber;
-    vcf.homeAddress = props.contactDetails.address;
-    // vcf.url = props.contactDetails.website;
+    vcf.url = props.contactDetails.website;
     vcf.role = props.  contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
     vcf.homeAddress = props.contactDetails.address;
-    vcf.logo = props.imgURL;
 
     const options = {
         src:"/logo.png",
@@ -63,8 +62,8 @@ export const QRCodeUI = (props:any) => {
                             level="L"
                             imageSettings={options}
                             includeMargin={true}
-                            bgColor="#fff"
-                            fgColor="#000"
+                            bgColor="#ffffff"
+                            fgColor={props.qrColor}
                         />
                     </div>
                     <div className={'text-center w-full'}>
@@ -73,11 +72,22 @@ export const QRCodeUI = (props:any) => {
                 </div>
             </div>
 
-            <button onClick={generateCode}
-                    className={'font-[500] my-2 flex flex-row text-[#ffffff] bg-[#000000] rounded-md p-2 items-center justify-between'}>
-                <ArrowDownTrayIcon color={'#ffffff'} height={25} width={25}/>
-                <p className={'ml-2'}>Download</p>
-            </button>
+            <div className={'flex items-center flex-row my-2'}>
+                <div className={'relative flex items-center flex-row'}>
+                    <input
+                        type="color"
+                        className={'border-none outline-none w-10 h-8'}
+                        onChange={(event)=>props.setQrColor(event.target.value)}
+                        value={props.qrColor}
+                    />
+                    <img alt={'palette'} src={Palette} className={'w-[30px] h-[30px]'}/>
+                </div>
+                <button onClick={generateCode}
+                        className={'ml-8 font-[500] flex flex-row text-[#ffffff] bg-[#000000] rounded-md p-2 items-center justify-between'}>
+                    <ArrowDownTrayIcon color={'#ffffff'} height={25} width={25}/>
+                    <p className={'ml-2'}>Download</p>
+                </button>
+            </div>
         </div>
     </div>
 }

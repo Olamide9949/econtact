@@ -22,12 +22,12 @@ export const ContactCardUI = (props:any) => {
 
     return <div className={'font-[Livvic] overflow-hidden max-w-[1350px] mx-auto md:px-16 px-4 md:pt-20 pt-10'}>
         <div className={'flex w-full md:flex-row md:items-start md:justify-between flex-col'}>
-            <div className={`md:w-1/2 w-full bg-[url(${ContactScan3D})] h-[400px] object-contain`}>
+            <div className={`md:w-1/2 w-full bg-[url(${ContactScan3D})] md:h-[400px] h-[250px] md:bg-right bg-center object-contain`}>
                 <div className={'flex items-center flex-row'}>
-                    <img className={'w-14 h-14'} src={`${Logo}`} alt={'scanny logo'}/>
-                    <p className={'text-[36px] text-[#000000] font-[800]'}>Scanny</p>
+                    <img className={'rounded-md md:opacity-100 md:backdrop-blur-none backdrop-blur-md opacity-85 w-14 h-14'} src={`${Logo}`} alt={'scanny logo'}/>
+                    <p className={'ml-2 text-[36px] text-[#000000] font-[800]'}>Scanny</p>
                 </div>
-                <p className={'-mt-2 text-[#000000]/40 font-[500] text-[12px]'}>Free contact qr-code generator.</p>
+                <p className={'-mt-1 tracking-wider text-[#000000]/40 font-[500] text-[12px]'}>Free contact qr-code generator.</p>
             </div>
 
             {/*Contact form*/}

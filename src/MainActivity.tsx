@@ -22,12 +22,13 @@ function MainActivity() {
     const [triggerModal, setTriggerModal] = useState(false);
     const [isCompany, setIsCompany] = useState(false);
     const [imgURL, setImgURl] = useState();
+    const [qrColor, setQrColor] = useState();
 
   return (
     <>
         <HeaderUI setIsCompany={setIsCompany} isCompany={isCompany}/>
         <ContactCardUI setImgURl={setImgURl} imgURL={imgURL} isCompany={isCompany} contactDetails={contactDetails} setContactDetails={setContactDetails} setTriggerModal={setTriggerModal}/>
-        <QRCodeUI imgURL={imgURL} contactDetails={contactDetails} setContactDetails={setContactDetails} triggerModal={triggerModal} setTriggerModal={setTriggerModal}/>
+        <QRCodeUI qrColor={qrColor} setQrColor={setQrColor} imgURL={imgURL} contactDetails={contactDetails} setContactDetails={setContactDetails} triggerModal={triggerModal} setTriggerModal={setTriggerModal}/>
         <FloatingFooterUI/>
     </>
   )
