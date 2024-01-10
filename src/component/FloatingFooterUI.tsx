@@ -8,9 +8,9 @@ export const FloatingFooterUI = () => {
             <p className={'mb-4 text-[#666666]/80 font-[500] text-[13px]'}>We are working to get this project to it's
                 own domain, if you find this project resourceful, support us to bring you great features and to move it
                 to it's own permanent domain.</p>
-            <button className={'outline-none bg-[#000000] text-[#ffffff] md:w-[150px] w-auto p-2 rounded-md'}>Donate &
+            <a href={'https://puthand.com/bucket/273a6e7beee4da2d0c952d77d347f7ae'} target={'_blank'} className={'outline-none bg-[#000000] text-[#ffffff] md:w-[150px] w-auto p-2 rounded-md'}>Donate &
                 Support
-            </button>
+            </a>
         </div>
     </div>
 }
