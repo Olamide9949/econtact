@@ -16,7 +16,7 @@ export const QRCodeUI = (props:any) => {
     vcf.organization = props.contactDetails.company;
     vcf.homePhone = props.contactDetails.mobileNumber;
     vcf.workPhone = props.contactDetails.phoneNumber;
-    vcf.title = props.  contactDetails.jobTitle;
+    vcf.title = props.contactDetails.jobTitle;
     vcf.note = props.contactDetails.notes;
     vcf.homeAddress.label = "Home Address";
     vcf.homeAddress.street = props.contactDetails.address;
